@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Video Stream</title>
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 1110px;
+            height: auto;
+            background-color: black;
+        }
+
+        .video-js {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9; /* Ensures the height fits the 16:9 aspect ratio */
+            object-fit: cover;
+        }
+
+        @media (max-width: 1110px) {
+            .video-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo -->
+    <div class="logo">
+        <img src="https://sangu.mv/wp-content/uploads/2020/07/logo-3.png" alt="Logo" style="width: 100%; height: auto;">
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-container">
+        <video id="live-video" class="video-js vjs-default-skin" controls preload="auto">
+            <source src="rtmp://your-rtmp-server/live/stream" type="rtmp/mp4">
+            <!-- You can also provide a fallback source if RTMP is not supported -->
+            <source src="https://sstv.ssplay.mv/hls/sstv-live/index.m3u8" type="application/x-mpegURL">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Video.js JavaScript -->
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+
+    <script>
+        // Initialize the video player
+        var player = videojs('live-video');
+    </script>
+</body>
+</html>
